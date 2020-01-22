@@ -1,0 +1,23 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpandableListView", "ExpandableListView\ExpandableListView.csproj", "{DBAF3D79-5162-44D8-8840-04DF8BCC13C1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpandableListView.Core", "ExpandableListView.Core\ExpandableListView.Core.csproj", "{78203833-7274-406B-B6BE-A4FB1670D647}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DBAF3D79-5162-44D8-8840-04DF8BCC13C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBAF3D79-5162-44D8-8840-04DF8BCC13C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBAF3D79-5162-44D8-8840-04DF8BCC13C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBAF3D79-5162-44D8-8840-04DF8BCC13C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78203833-7274-406B-B6BE-A4FB1670D647}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78203833-7274-406B-B6BE-A4FB1670D647}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78203833-7274-406B-B6BE-A4FB1670D647}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78203833-7274-406B-B6BE-A4FB1670D647}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
