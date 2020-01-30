@@ -6,12 +6,15 @@ using Android.Support.Design.Widget;
 using Android.Views;
 using ExpandableListView.Core.ViewModels;
 using MvvmCross.Droid.Support.V7.AppCompat;
+using MvvmCross.Platforms.Android.Binding.Views;
+using static Android.Widget.ExpandableListView;
 
 namespace ExpandableListView
 {
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme.NoActionBar", MainLauncher = true)]
-    public class MainActivity : MvxAppCompatActivity<MainViewModel>
+    public class MainActivity : MvxAppCompatActivity<MainViewModel>, IOnGroupClickListener
     {
+        MvxExpandableListView expandableListView;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -21,6 +24,9 @@ namespace ExpandableListView
 
             Android.Support.V7.Widget.Toolbar toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
             SetSupportActionBar(toolbar);
+
+            expandableListView = FindViewById<MvxExpandableListView>(Resource.Id.expListView);
+            expandableListView.SetOnGroupClickListener(this);
 
             FloatingActionButton fab = FindViewById<FloatingActionButton>(Resource.Id.fab);
             fab.Click += FabOnClick;
@@ -54,6 +60,12 @@ namespace ExpandableListView
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+
+        public bool OnGroupClick(Android.Widget.ExpandableListView parent, View clickedView, int groupPosition, long id)
+        {
+            ViewModel.SelectItemCommand.Execute(groupPosition);
+            return ViewModel.ShouldExpandGroup;
         }
     }
 }

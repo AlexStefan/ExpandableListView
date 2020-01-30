@@ -6,6 +6,8 @@ namespace ExpandableListView.Core.ViewModels
 {
     public class MainViewModel : MvxViewModel
     {
+        public bool ShouldExpandGroup { get; set; }
+
         private MvxObservableCollection<ItemViewModel> items;
         public MvxObservableCollection<ItemViewModel> Items
         {
@@ -29,13 +31,13 @@ namespace ExpandableListView.Core.ViewModels
             }
         }
 
-        private IMvxCommand selectItemCommand;
-        public IMvxCommand SelectItemCommand
+        private IMvxCommand<int> selectItemCommand;
+        public IMvxCommand<int> SelectItemCommand
         {
             get
             {
                 if (selectItemCommand == null)
-                    selectItemCommand = new MvxCommand<ItemViewModel>(async (item) => await SelectItem(item));
+                    selectItemCommand = new MvxCommand<int>((item) => SelectItem(item));
 
                 return selectItemCommand;
             }
@@ -46,15 +48,20 @@ namespace ExpandableListView.Core.ViewModels
 
         }
 
-        private async Task SelectItem(ItemViewModel item)
+        private void SelectItem(int itemPosition)
         {
-            Items.Remove(item);
+            ShouldExpandGroup = false;
+            if (itemPosition + 1 == Items.Count)
+            {
+                Items.RemoveAt(itemPosition);
+                ShouldExpandGroup = true;
+            }
         }
 
         public MainViewModel()
         {
             Items = new MvxObservableCollection<ItemViewModel>();
-            for (int i = 0; i < 1; i++)
+            for (int i = 0; i < 11; i++)
             {
                 Items.Add(new ItemViewModel($"Title {i}"));
             }

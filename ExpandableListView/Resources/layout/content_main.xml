@@ -8,11 +8,12 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_main">
     <MvvmCross.Platforms.Android.Binding.Views.MvxExpandableListView
+        android:id="@+id/expListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:groupIndicator="@null"
         android:scrollbarSize="4dp"
-        app:MvxBind="ItemsSource Items; ItemClick SelectItemChildCommand; GroupClick SelectItemCommand"
+        app:MvxBind="ItemsSource Items; ItemClick SelectItemChildCommand"
         app:MvxItemTemplate="@layout/item_template"
         app:MvxGroupItemTemplate="@layout/item_child_template" />
 </LinearLayout>
